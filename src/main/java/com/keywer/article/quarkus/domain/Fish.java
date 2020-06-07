@@ -16,14 +16,10 @@ import java.io.Serializable;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Fish.getByName", query = "select f from Fish f where f.name = :name"),
-        @NamedQuery(name = "Fish.countByFamily", query = "select count(fi) from Fish fi where fi.family.name = :familyName")
 }
 )
 public class Fish extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    public long id;
     @NotBlank
     public String name;
     @Positive
@@ -42,7 +38,4 @@ public class Fish extends PanacheEntity {
         return find("#Fish.getByName", name).firstResult();
     }
 
-    public static Integer countByFamily(String familyName){
-       return find("#Fish.countByFamily", familyName).project(Integer.class).firstResult();
-    }
 }

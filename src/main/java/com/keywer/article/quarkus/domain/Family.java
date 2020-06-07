@@ -13,9 +13,6 @@ import java.util.Collection;
 @Entity
 public class Family extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    public long id;
     @NotBlank
     public String name;
     @NotNull
